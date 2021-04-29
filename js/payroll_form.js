@@ -41,6 +41,24 @@ const save = () => {
    }
 }
 
+function createAndUpdateStorage(employeePayrollData)
+{
+    let EmployeePayrollList = JSON.parse(localStorage.getItem("EmployeePayrollList"));
+        if(EmployeePayrollList != undefined)
+            {
+                EmployeePayrollList.push(employeePayrollData);
+            } 
+        else 
+            {
+                EmployeePayrollList = [employeePayrolData]
+                
+            }
+        alert(EmployeePayrollList.toString());
+        localStorage.setItem("EmployeePayrollList", JSON.stringify(EmployeePayrollList));
+}
+
+
+
 const createEmployeePayroll = () => {
     
     let employeePayrollData = new EmployeePayrollData();
@@ -51,7 +69,6 @@ const createEmployeePayroll = () => {
         throw e;
     }
             employeePayrollData.profilePic = getSelectedValues('[name=profile]').pop();
-    
             employeePayrollData.gender = getSelectedValues('[name=gender]').pop();
             employeePayrollData.department = getSelectedValues('[name=department]');
             employeePayrollData.salary = getInputValueById('#salary');
@@ -81,3 +98,33 @@ const createEmployeePayroll = () => {
                 let value = document.getElementById(id).value;
                 return value;
                 }
+
+
+                const resetForm = () => {
+                    setValue('#name', '');
+                    unsetSelectedValues('[name=profile]');
+                    unsetSelectedValues('[name=gender]');
+                    unsetSelectedValues('[name=department]');
+                    setValue('#salary','');
+                    setValue('#notes','');
+                    setValue('#day','1');
+                    setValue('#month','January');
+                    setValue('#year','2020');
+                }
+                const unsetSelectedValues = (propertyValue) => {
+                    let allItems = document.querySelectorAll(propertyValue);
+                    allItems.forEach(item => {
+                        item.checked = false;
+                    });
+                }
+                
+                const setTextValue = (id,value) => {
+                    const element = document.querySelector(id);
+                    element.textContent = value;
+                }
+                
+                const setValue = (id, value) => {
+                    const element = document.querySelector(id);
+                    element.value = value;
+                }
+                
