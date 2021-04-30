@@ -9,8 +9,6 @@
 
     <title>Employee Payroll Form</title>
     <link rel="stylesheet" href="../css/EmployeePayrollApp.css">
-    <script src="../js/EmployeePayrollApp.js"></script>
-    <script src="../js/payroll_form.js"></script>
 
 </head>
 
@@ -175,12 +173,14 @@
                     <div class="buttonParent">
                         <a href="./home.html" class="resetButton button cancelButton">Cancel</a>
                         <div class="submit-reset">
-                            <button type="submit" class="button submitButton" id="submitButton">Submit</button>
+                            <button type="submit" class="button submitButton" onclick="save()" id="submitButton">Submit</button>
                             <button type="reset" class="resetButton button">Reset</button>
                         </div>
                     </div>
 
     </form>
+    <script src="../js/EmployeePayrollApp.js"></script>
+    <script src="../js/payroll_form.js"></script>
 
 </body>
 
